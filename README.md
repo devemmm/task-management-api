@@ -36,6 +36,7 @@ javascript ==> Node Js
 ## DEFAULT URL
 
     - development: http://localhost:3001
+    - deployment: https://test.trepareport.org.rw
 
 ## installation Pre-requisites
 
@@ -76,7 +77,7 @@ javascript ==> Node Js
         1. navigate to project directory
            => cd task-management-module-api
         2. build docker image
-           => sudo docker build -t task-management-module-api .
+           => sudo docker build -t task-management-module-api:latest .
         3. run docker container
            => sudo  docker-compose up -d
 
