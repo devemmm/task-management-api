@@ -36,7 +36,7 @@ javascript ==> Node Js
 ## DEFAULT URL
 
     - development: http://localhost:3001
-    - deployment: https://test.trepareport.org.rw
+    - deployment: https://qt-api.nextreflexe.com
 
 ## installation Pre-requisites
 
