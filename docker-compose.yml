@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  qt-core:
+    image: task-management-module-api:latest
+    container_name: task-management-module-api
+    ports:
+      - "8097:3001"
+    restart: always
+    logging:
+      options:
+        max-size: 5m
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+        reservations:
+          memory: 1024M

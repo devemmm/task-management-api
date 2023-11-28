@@ -1,0 +1,805 @@
+{
+	"info": {
+		"_postman_id": "f8b93fbd-11fa-42ce-8432-6114512e62c4",
+		"name": "QT Practical Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12290303",
+		"_collection_link": "https://speeding-sunset-923348.postman.co/workspace/GENNEXT~3be0fb4b-a278-455f-b96c-292e62c15f05/collection/12290303-f8b93fbd-11fa-42ce-8432-6114512e62c4?action=share&source=collection_link&creator=12290303"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/user?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json()",
+									"pm.environment.set('token', res.data.user.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"entivug@gmail.com\",\n    \"password\": \"Devemm@2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup with Avatar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/devemm/Pictures/Wallpapers/profile.jpg"
+								},
+								{
+									"key": "fname",
+									"value": "Emmanuel",
+									"type": "text"
+								},
+								{
+									"key": "lname",
+									"value": "NTIVUGURUZWA",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+250788596281",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "Rwanda",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "KIGALI City",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "devemm",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "entivug@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Devemm@2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Emmanuel\",\n    \"lname\": \"NTIVUGURUZWA\",\n    \"phone\": \"+250788596281\",\n    \"country\": \"Rwanda\",\n    \"location\": \"Kigali Gasabo\",\n    \"username\": \"devemm\",\n    \"email\": \"entivug@gmail.com\",\n    \"password\": \"Devemm@2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup create second user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fname\": \"Joayesse\",\n    \"lname\": \"UWINEZA\",\n    \"phone\": \"+250788596281\",\n    \"country\": \"Rwanda\",\n    \"location\": \"Kigali Gasabo\",\n    \"username\": \"jou\",\n    \"email\": \"jua@gmail.com\",\n    \"password\": \"Devemm@2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/devemm/Pictures/Wallpapers/profile.jpg"
+								},
+								{
+									"key": "fname",
+									"value": "Jam",
+									"type": "text"
+								},
+								{
+									"key": "lname",
+									"value": "NTIVUGURUZWA",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "+250788596281",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "Rwanda",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "KIGALI City",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Devemm@2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/user/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"Devemm@2023\",\n    \"newPassword\": \"Devemm@2023\",\n    \"confirmPassword\": \"Devemm@2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/changePassword/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"changePassword",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "task",
+			"item": [
+				{
+					"name": "create task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"study\",\n    \"description\": \"please do this task it is periolity\",\n    \"file\": \"https://www.africau.edu/images/default/sample.pdf\",\n    \"priority\": \"LOW\",\n    \"start_date\": \"2023-11-22\",\n    \"end_date\": \"2023-12-01\",\n    \"project_id\": 1,\n    \"assignees\": [1]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/task/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "studyyyyyyy",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "please do this task it is periolity",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/devemm/Downloads/Kigali Kunga Clinic Internet Installation - Sheet1.pdf"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-11-22",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-12-01",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "users",
+									"value": "[1,2]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/task/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create task with file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "signup page",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "please do this task it is periolity",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/devemm/Downloads/2023-11-25T22_48_22.292ZHSLU_Template_Bachelor.pdf"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-11-22",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-12-01",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "assignees",
+									"value": "[1]",
+									"type": "text"
+								},
+								{
+									"key": "priority",
+									"value": "LOW",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/task/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get task",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/task",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/task/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "project",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"OPENMRS\",\n    \"description\": \"MoH application\",\n    \"start_date\": \"2023-03-18\",\n    \"end_date\": \"2025-11-20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create second project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"RISSA\",\n    \"description\": \"RISSA application\",\n    \"start_date\": \"2023-09-18\",\n    \"end_date\": \"2025-11-20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/project/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/project/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
