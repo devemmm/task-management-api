@@ -49,7 +49,7 @@ class Service extends Controller {
     const { id, uuid, deadline } = req.body;
 
     try {
-      let query = { };
+      let query = {};
 
       if (id) {
         query.id = id;
@@ -84,6 +84,8 @@ class Service extends Controller {
         );
       }
 
+      req.users = updates.assignees;
+
       const allowedUpdates = [
         "name",
         "description",
@@ -93,6 +95,7 @@ class Service extends Controller {
         "end_date",
         "project_id",
         "users",
+        "assignees",
       ];
 
       const isValidUpdate = Object.keys(updates).every((update) =>
@@ -116,28 +119,10 @@ class Service extends Controller {
         throw new Error("Task not found");
       }
 
-      Object.entries(updates).forEach((update) => {
-        task[update[0]] = update[1];
-      });
-
-      let users = JSON.parse(req?.body?.users);
-      task.project_id = parseInt(task.project_id);
-      if (users.length > 0) {
-        await task.addUser(users, { through: { selfGranted: false } });
-
-        users.map(async (usrId) => {
-          const user = await User.findByPk(usrId);
-
-          await user.addProject(task.project_id, {
-            through: { selfGranted: false },
-          });
-        });
-      }
-
       return await task.save();
     } catch (error) {
       let responseType = responses.INTERNAL_SERVER_ERROR;
-      responseType.MSG = "something went wrong";
+      responseType.MSG = error.message;
 
       this.sendResponse({ req, res, type: responseType });
     }
@@ -147,8 +132,8 @@ class Service extends Controller {
     try {
       let task = await Schema.findByPk(req.params.id);
 
-      if(!task){
-        throw new Error("Task not found")
+      if (!task) {
+        throw new Error("Task not found");
       }
 
       return task.destroy();
